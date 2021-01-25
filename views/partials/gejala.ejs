@@ -1,0 +1,27 @@
+<div class="w-75 border d-flex flex-column p-3">
+  <h2>Data Gejala</h2>
+  <div class="mt-4 d-flex flex-column">
+    <button class="btn btn-primary align-self-end">Tambah data</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID Gejala</th>
+          <th scope="col">Nama Gejala</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% hasil.forEach(data => { %>
+        <tr>
+          <th scope="row"><%- data.id_gejala %></th>
+          <td><%- data.nama_gejala %></td>
+          <td>
+            <button class="btn btn-success">Ubah</button>
+            <button class="btn btn-danger">Hapus</button>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>

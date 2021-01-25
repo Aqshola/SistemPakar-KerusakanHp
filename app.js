@@ -1,6 +1,7 @@
 const express = require("express");
 const main = require("./routes/main");
 const diagnosa = require("./routes/diagnosa");
+const admin = require("./routes/admin");
 
 const { callDB } = require("./config/DB");
 const bodyParser = require("body-parser");
@@ -17,5 +18,6 @@ callDB();
 
 app.use("/", main);
 app.use("/diagnosa", diagnosa);
+app.use("/admin", admin);
 
 app.listen(PORT, console.log("Listening port 5000"));
