@@ -184,7 +184,6 @@ const postRemoveGejala = async (req, res) => {
 };
 
 //Relasi Controller
-
 const getRelasi = async (req, res) => {
   try {
     const hasil = await sequelize.query(
@@ -202,7 +201,6 @@ const getRelasi = async (req, res) => {
     console.log(err);
   }
 };
-
 const getAddRelasi = async (req, res) => {
   const dataGejala = await sequelize.query("select * from gejala", {
     type: QueryTypes.SELECT,
@@ -212,12 +210,42 @@ const getAddRelasi = async (req, res) => {
     type: QueryTypes.SELECT,
   });
 
-  console.log(dataGejala);
-  console.log(dataRusak);
-
-  res.render("pages/action.ejs", { type: "relasi", dataGejala, dataRusak });
+  res.render("pages/action.ejs", {
+    type: "relasi",
+    dataGejala,
+    dataRusak,
+    action: "add",
+  });
 };
+const getEditRelasi = async (req, res) => {
+  try {
+    const id = req.params.id;
 
+    const dataRelasi = await sequelize.query(
+      `select * from pertanyaan where id='${id}'`,
+      {
+        type: QueryTypes.SELECT,
+      }
+    );
+    const dataGejala = await sequelize.query("select * from gejala", {
+      type: QueryTypes.SELECT,
+    });
+
+    const dataRusak = await sequelize.query("select * from kerusakan", {
+      type: QueryTypes.SELECT,
+    });
+
+    res.render("pages/action.ejs", {
+      type: "relasi",
+      dataGejala,
+      dataRusak,
+      dataRelasi,
+      action: "edit",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 const postAddRelasi = async (req, res) => {
   try {
     const { gejala_awal, ya, tidak } = req.body;
@@ -232,15 +260,79 @@ const postAddRelasi = async (req, res) => {
 
     console.log("success");
 
-    const dataGejala = await sequelize.query("select * from gejala", {
-      type: QueryTypes.SELECT,
-    });
+    res.redirect(req.originalUrl);
+  } catch (err) {
+    console.log(err);
+  }
+};
+const postEditRelasi = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { gejala_awal, ya, tidak } = req.body;
 
-    const dataRusak = await sequelize.query("select * from kerusakan", {
-      type: QueryTypes.SELECT,
-    });
+    await sequelize.query(
+      `update pertanyaan
+       set tanya_awal = '${gejala_awal}',
+           ya = '${ya}',
+           tidak= '${tidak}'
+      where id=${id}
+      `
+    );
+    console.log("Update sukses");
+    res.redirect(req.originalUrl);
+  } catch (err) {
+    console.log(err);
+  }
+};
+const postRemoveRelasi = async (req, res) => {
+  try {
+    const id = req.params.id;
 
-    res.render("pages/action.ejs", { type: "relasi", dataGejala, dataRusak });
+    const dataRelasi = await sequelize.query(
+      `select * from pertanyaan where id = '${id}'`,
+      {
+        type: QueryTypes.SELECT,
+      }
+    );
+
+    await sequelize.query(
+      `update pertanyaan
+       set ya = 'NONE'
+       where  ya = '${dataRelasi[0].tanya_awal}'`,
+      {
+        type: QueryTypes.UPDATE,
+      }
+    );
+
+    await sequelize.query(
+      `update pertanyaan
+       set tidak = 'NONE'
+       where  tidak = '${dataRelasi[0].tanya_awal}'`,
+      {
+        type: QueryTypes.UPDATE,
+      }
+    );
+
+    await sequelize.query(
+      `delete from pertanyaan
+     where tanya_awal = '${dataRelasi[0].ya}' || tanya_awal = '${dataRelasi[0].tidak}'
+    `,
+      {
+        type: QueryTypes.DELETE,
+      }
+    );
+
+    await sequelize.query(
+      `delete from pertanyaan
+     where id='${id}'`,
+      {
+        type: QueryTypes.DELETE,
+      }
+    );
+
+    console.log("Delete success");
+
+    res.redirect("/admin/relasi");
   } catch (err) {
     console.log(err);
   }
@@ -255,6 +347,7 @@ module.exports = {
   getAddRelasi,
   getEditRusak,
   getEditGejala,
+  getEditRelasi,
   postAddRusak,
   postAddGejala,
   postAddRelasi,
@@ -262,4 +355,6 @@ module.exports = {
   postRemoveRusak,
   postEditGejala,
   postRemoveGejala,
+  postEditRelasi,
+  postRemoveRelasi,
 };

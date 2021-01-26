@@ -3,6 +3,7 @@ const { Sequelize } = require("sequelize");
 const sequelize = new Sequelize("sistempakar", "root", "", {
   host: "localhost",
   dialect: "mysql",
+  logging: false,
 });
 
 const callDB = async () => {

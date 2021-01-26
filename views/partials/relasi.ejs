@@ -7,7 +7,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Gejala awal</th>
+          <th scope="col">Pertanyaan Gejala</th>
           <th scope="col">Ya</th>
           <th scope="col">Tidak</th>
           <th scope="col"></th>
@@ -16,12 +16,16 @@
       <tbody>
         <% hasil.forEach(data => { %>
         <tr>
-          <th><%- data.gejala %></th>
+          <th><%-data.tanya_awal %> - <%-data.gejala %></th>
           <td><%- data.ya %></td>
           <td><%- data.tidak %></td>
-          <td>
-            <button class="btn btn-success">Ubah</button>
-            <button class="btn btn-danger">Hapus</button>
+          <td class="d-flex justify-content-evenly">
+            <a href="/admin/edit/relasi/<%- data.id %> " class="btn btn-success"
+              >Ubah</a
+            >
+            <form action="/admin/remove/relasi/<%- data.id %> " method="post">
+              <button class="btn btn-danger">Hapus</button>
+            </form>
           </td>
         </tr>
         <% }) %>

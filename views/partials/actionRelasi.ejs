@@ -1,4 +1,5 @@
-<h3>Edit Relasi</h3>
+<% if (action === "add") { %>
+<h3>Add Relasi</h3>
 <form method="POST" class="w-50 d-flex flex-column">
   <div class="form-group">
     <label for="exampleFormControlInput1">Gejala awal</label>
@@ -67,3 +68,105 @@
   </div>
   <button class="mt-5 btn btn-primary w-25 align-self-end">Simpan</button>
 </form>
+<% } %> <% if (action === "edit") { %>
+<h3>Edit Relasi</h3>
+<form method="POST" class="w-50 d-flex flex-column">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Gejala awal</label>
+    <select
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="Ex: GJ000"
+      required
+      name="gejala_awal"
+    >
+      <option value="NONE" disabled>Pilih Gejala awal</option>
+      <% dataGejala.forEach(gejala => { %> <% if(dataRelasi[0].tanya_awal
+      ===gejala.id_gejala){ %>
+      <option value="<%- gejala.id_gejala %>" selected>
+        <%- gejala.id_gejala %> - <%- gejala.nama_gejala %>
+      </option>
+      <% } else{ %>
+      <option value="<%- gejala.id_gejala %>">
+        <%- gejala.id_gejala %> - <%- gejala.nama_gejala %>
+      </option>
+      <% } %> <% }) %>
+    </select>
+  </div>
+  <div class="form-group mt-3">
+    <label for="exampleFormControlInput1">Ya</label>
+    <select
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="Ex: GJ000"
+      required
+      name="ya"
+    >
+      <option value="NONE" disabled>Pilih Kemungkinan Ya</option>
+      <% dataGejala.forEach(gejala => { %> <% if(dataRelasi[0].ya ===
+      gejala.id_gejala){ %>
+      <option value="<%- gejala.id_gejala %>" selected>
+        <%- gejala.id_gejala %> - <%- gejala.nama_gejala %>
+      </option>
+      <% } else{ %>
+      <option value="<%- gejala.id_gejala %>">
+        <%- gejala.id_gejala %> - <%- gejala.nama_gejala %>
+      </option>
+      <% } %> <% }) %>
+      <option disabled="disabled">----</option>
+      <% dataRusak.forEach(rusak => { %> <% if(dataRelasi[0].ya ===
+      rusak.id_rusak){ %>
+      <option value="<%- rusak.id_rusak %>" selected>
+        <%- rusak.id_rusak %> - <%- rusak.nama_rusak %>
+      </option>
+      <% } else{ %>
+      <option value="<%- rusak.id_rusak %>">
+        <%- rusak.id_rusak %> - <%- rusak.nama_rusak %>
+      </option>
+      <% } %> <% }) %> <% if(dataRelasi[0].ya === "NONE"){ %>
+      <option value="NONE" selected>None</option>
+      <% } else{ %>
+      <option value="NONE">None</option>
+      <% } %>
+    </select>
+  </div>
+  <div class="form-group mt-3">
+    <label for="exampleFormControlInput1">Tidak</label>
+    <select
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="Ex: GJ000"
+      required
+      name="tidak"
+    >
+      <option value="NONE" disabled>Pilih Kemungkinan tidak</option>
+      <% dataGejala.forEach(gejala => { %> <% if(dataRelasi[0].tidak ===
+      gejala.id_gejala){ %>
+      <option value="<%- gejala.id_gejala %>" selected>
+        <%- gejala.id_gejala %> - <%- gejala.nama_gejala %>
+      </option>
+      <% } else{ %>
+      <option value="<%- gejala.id_gejala %>">
+        <%- gejala.id_gejala %> - <%- gejala.nama_gejala %>
+      </option>
+      <% } %> <% }) %>
+      <option disabled="disabled">----</option>
+      <% dataRusak.forEach(rusak => { %> <% if(dataRelasi[0].tidak ===
+      rusak.id_rusak){ %>
+      <option value="<%- rusak.id_rusak %>" selected>
+        <%- rusak.id_rusak %> - <%- rusak.nama_rusak %>
+      </option>
+      <% } else{ %>
+      <option value="<%- rusak.id_rusak %>">
+        <%- rusak.id_rusak %> - <%- rusak.nama_rusak %>
+      </option>
+      <% } %> <% }) %> <% if(dataRelasi[0].tidak === "NONE"){ %>
+      <option value="NONE" selected>None</option>
+      <% } else{ %>
+      <option value="NONE">None</option>
+      <% } %>
+    </select>
+  </div>
+  <button class="mt-5 btn btn-primary w-25 align-self-end">Simpan</button>
+</form>
+<% } %>
