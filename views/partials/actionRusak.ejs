@@ -1,4 +1,5 @@
-<h3>Edit Data Rusak</h3>
+<% if (action==="add") { %>
+<h3>Tambah Data Rusak</h3>
 <form method="POST" class="w-50 d-flex flex-column">
   <div class="form-group">
     <label for="exampleFormControlInput1">Kode Kerusakan</label>
@@ -21,3 +22,35 @@
   </div>
   <button class="mt-5 btn btn-primary w-25 align-self-end">Simpan</button>
 </form>
+<% } %> <% if (action==="edit") { %>
+<h3>Edit Data Rusak</h3>
+<form
+  method="POST"
+  action="/admin/edit/rusak/<%- dataRusak[0].id_rusak %>"
+  class="w-50 d-flex flex-column"
+>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Kode Kerusakan</label>
+    <input
+      type="text"
+      class="form-control"
+      name="kode_rusak"
+      placeholder="Ex: KR000"
+      required
+      value="<%- dataRusak[0].id_rusak %>"
+      disabled
+    />
+  </div>
+  <div class="form-group mt-3">
+    <label for="exampleFormControlInput1">Nama Kerusakan</label>
+    <input
+      type="text"
+      class="form-control"
+      name="nama_rusak"
+      placeholder="Ex: Komponen rusak"
+      value="<%- dataRusak[0].nama_rusak %>"
+    />
+  </div>
+  <button class="mt-5 btn btn-primary w-25 align-self-end">Simpan</button>
+</form>
+<% } %>

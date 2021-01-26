@@ -17,9 +17,19 @@
         <tr>
           <th scope="row"><%- data.id_rusak %></th>
           <td><%- data.nama_rusak %></td>
-          <td>
-            <button class="btn btn-success">Ubah</button>
-            <button class="btn btn-danger">Hapus</button>
+          <td class="d-flex justify-content-evenly">
+            <a
+              href="/admin/edit/rusak/<%- data.id_rusak %> "
+              class="btn btn-success"
+              class="mr-2"
+              >Ubah</a
+            >
+            <form
+              method="POST"
+              action="/admin/remove/rusak/<%- data.id_rusak %> "
+            >
+              <button class="btn btn-danger">Hapus</button>
+            </form>
           </td>
         </tr>
         <% }) %>
