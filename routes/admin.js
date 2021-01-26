@@ -12,6 +12,9 @@ const {
   getEditRusak,
   postEditRusak,
   postRemoveRusak,
+  getEditGejala,
+  postEditGejala,
+  postRemoveGejala,
 } = require("../controller/admin");
 
 const router = express.Router();
@@ -24,12 +27,15 @@ router.post("/add/rusak", postAddRusak);
 router.post("/edit/rusak/:id", postEditRusak);
 router.post("/remove/rusak/:id", postRemoveRusak);
 
+//Gejala Route
 router.get("/gejala", getGejala);
-router.get("/relasi", getRelasi);
-
 router.get("/add/gejala", getAddGejala);
+router.get("/edit/gejala/:id", getEditGejala);
 router.post("/add/gejala", postAddGejala);
+router.post("/edit/gejala/:id", postEditGejala);
+router.post("/remove/gejala/:id", postRemoveGejala);
 
+router.get("/relasi", getRelasi);
 router.get("/add/relasi", getAddRelasi);
 router.post("/add/relasi", postAddRelasi);
 

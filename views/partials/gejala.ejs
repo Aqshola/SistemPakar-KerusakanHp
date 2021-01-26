@@ -17,9 +17,18 @@
         <tr>
           <th scope="row"><%- data.id_gejala %></th>
           <td><%- data.nama_gejala %></td>
-          <td>
-            <button class="btn btn-success">Ubah</button>
-            <button class="btn btn-danger">Hapus</button>
+          <td class="d-flex justify-content-evenly">
+            <a
+              href="/admin/edit/gejala/<%- data.id_gejala %> "
+              class="btn btn-success"
+              >Ubah</a
+            >
+            <form
+              action="/admin/remove/gejala/<%- data.id_gejala %> "
+              method="post"
+            >
+              <button class="btn btn-danger">Hapus</button>
+            </form>
           </td>
         </tr>
         <% }) %>

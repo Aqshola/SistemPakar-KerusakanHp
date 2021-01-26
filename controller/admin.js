@@ -95,7 +95,7 @@ const postRemoveRusak = async (req, res) => {
   res.redirect("/admin");
 };
 
-//
+//Gejala Controller
 const getGejala = async (req, res) => {
   try {
     const hasil = await sequelize.query("SELECT * from gejala ", {
@@ -106,6 +106,84 @@ const getGejala = async (req, res) => {
     console.log(err);
   }
 };
+const getAddGejala = async (req, res) => {
+  res.render("pages/action.ejs", { type: "gejala", action: "add" });
+};
+const getEditGejala = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const dataGejala = await sequelize.query(
+      `select * from gejala where id_gejala = '${id}'`,
+      {
+        type: QueryTypes.SELECT,
+      }
+    );
+
+    res.render("pages/action.ejs", {
+      type: "gejala",
+      action: "edit",
+      dataGejala,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+const postAddGejala = async (req, res) => {
+  try {
+    const { kode_gejala, nama_gejala } = req.body;
+
+    await sequelize.query(
+      `insert into gejala values ('${kode_gejala}','${nama_gejala}')`,
+      {
+        type: QueryTypes.INSERT,
+      }
+    );
+    console.log("success");
+    res.redirect(req.originalUrl);
+  } catch (err) {
+    console.log(err);
+  }
+};
+const postEditGejala = async (req, res) => {
+  try {
+    const { nama_gejala } = req.body;
+    const id = req.params.id;
+    await sequelize.query(
+      `update gejala
+       set nama_gejala='${nama_gejala}'
+       where id_gejala='${id}'
+      `,
+      { type: QueryTypes.UPDATE }
+    );
+    console.log("Update sukses");
+    res.redirect(req.originalUrl);
+  } catch (err) {
+    console.log(err);
+  }
+};
+const postRemoveGejala = async (req, res) => {
+  const id = req.params.id;
+
+  await sequelize.query(
+    `delete from pertanyaan
+     where ya = '${id}' || tidak = '${id}'
+    `,
+    {
+      type: QueryTypes.DELETE,
+    }
+  );
+  console.log("delete pertanyaan");
+  await sequelize.query(`delete from gejala where id_gejala = '${id}'`, {
+    type: QueryTypes.DELETE,
+  });
+
+  console.log("delete gejala");
+
+  res.redirect("/admin/gejala");
+};
+
+//Relasi Controller
 
 const getRelasi = async (req, res) => {
   try {
@@ -123,28 +201,6 @@ const getRelasi = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-};
-
-const getAddGejala = async (req, res) => {
-  res.render("pages/action.ejs", { type: "gejala" });
-};
-
-const postAddGejala = async (req, res) => {
-  try {
-    const { kode_gejala, nama_gejala } = req.body;
-
-    await sequelize.query(
-      `insert into gejala values ('${kode_gejala}','${nama_gejala}')`,
-      {
-        type: QueryTypes.INSERT,
-      }
-    );
-    console.log("success");
-  } catch (err) {
-    console.log(err);
-  }
-
-  res.render("pages/action.ejs", { type: "gejala" });
 };
 
 const getAddRelasi = async (req, res) => {
@@ -198,9 +254,12 @@ module.exports = {
   getAddGejala,
   getAddRelasi,
   getEditRusak,
+  getEditGejala,
   postAddRusak,
   postAddGejala,
   postAddRelasi,
   postEditRusak,
   postRemoveRusak,
+  postEditGejala,
+  postRemoveGejala,
 };
