@@ -4,36 +4,38 @@
     <a href="/admin/add/rusak" class="btn btn-primary align-self-end"
       >Tambah data</a
     >
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">ID kerusakan</th>
-          <th scope="col">Nama Kerusakan</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% hasil.forEach(data => { %>
-        <tr>
-          <th scope="row"><%- data.id_rusak %></th>
-          <td><%- data.nama_rusak %></td>
-          <td class="d-flex justify-content-evenly">
-            <a
-              href="/admin/edit/rusak/<%- data.id_rusak %> "
-              class="btn btn-success"
-              class="mr-2"
-              >Ubah</a
-            >
-            <form
-              method="POST"
-              action="/admin/remove/rusak/<%- data.id_rusak %> "
-            >
-              <button class="btn btn-danger">Hapus</button>
-            </form>
-          </td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
+    <div class="tableFixHead mt-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID kerusakan</th>
+            <th scope="col">Nama Kerusakan</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% hasil.forEach(data => { %>
+          <tr>
+            <th scope="row"><%- data.id_rusak %></th>
+            <td><%- data.nama_rusak %></td>
+            <td class="d-flex justify-content-evenly">
+              <a
+                href="/admin/edit/rusak/<%- data.id_rusak %> "
+                class="btn btn-success"
+                class="mr-2"
+                >Ubah</a
+              >
+              <form
+                method="POST"
+                action="/admin/remove/rusak/<%- data.id_rusak %> "
+              >
+                <button class="btn btn-danger">Hapus</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

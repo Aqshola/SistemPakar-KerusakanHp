@@ -1,3 +1,23 @@
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0b5ed7;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+}
+
 .tableFixHead {
   overflow-y: auto;
   height: 550px;

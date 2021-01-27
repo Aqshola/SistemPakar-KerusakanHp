@@ -4,32 +4,36 @@
     <a href="/admin/add/relasi" class="btn btn-primary align-self-end"
       >Tambah data</a
     >
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Pertanyaan Gejala</th>
-          <th scope="col">Ya</th>
-          <th scope="col">Tidak</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% hasil.forEach(data => { %>
-        <tr>
-          <th><%-data.tanya_awal %> - <%-data.gejala %></th>
-          <td><%- data.ya %></td>
-          <td><%- data.tidak %></td>
-          <td class="d-flex justify-content-evenly">
-            <a href="/admin/edit/relasi/<%- data.id %> " class="btn btn-success"
-              >Ubah</a
-            >
-            <form action="/admin/remove/relasi/<%- data.id %> " method="post">
-              <button class="btn btn-danger">Hapus</button>
-            </form>
-          </td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
+    <div class="tableFixHead mt-2">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Pertanyaan Gejala</th>
+            <th scope="col">Ya</th>
+            <th scope="col">Tidak</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% hasil.forEach(data => { %>
+          <tr>
+            <th><%-data.tanya_awal %> - <%-data.gejala %></th>
+            <td><%- data.ya %></td>
+            <td><%- data.tidak %></td>
+            <td class="d-flex justify-content-evenly">
+              <a
+                href="/admin/edit/relasi/<%- data.id %> "
+                class="btn btn-success"
+                >Ubah</a
+              >
+              <form action="/admin/remove/relasi/<%- data.id %> " method="post">
+                <button class="btn btn-danger">Hapus</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
