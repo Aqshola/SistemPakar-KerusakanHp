@@ -13,25 +13,24 @@
       crossorigin="anonymous"
     />
 
-    <title>Hello, world!</title>
+    <title>Tanya Gejala</title>
   </head>
   <body>
     <div
-      class="d-flex flex-column p-4 justify-content-center align-items-center"
+      class="d-flex vh-100 w-100 flex-column p-4 justify-content-center align-items-center"
     >
       <% if (data.tipe==="tanya") { %>
-      <h1 class="mb-3">Pertanyaan</h1>
-      <h5><%- data.value %> ?</h5>
+      <h4 class="mb-3 ">Kendala yang dialami</h4>
+      <h3 class="fw-bold"><%- data.value %> ?</h5>
 
-      <div class="flex">
-        
-        <a href="<% if(data.ya === "NONE" || data.ya.substring(0,2)==="KR"){ %>
+      <div class="flex mt-3">
+        <a role="button" class="btn shadow-sm border border-dark btn-lg border-3" href="<% if(data.ya === "NONE" || data.ya.substring(0,2)==="KR"){ %>
                 /diagnosa/hasil/<%- data.ya %> 
                 <% } else{ %>  
                 /diagnosa/tanya/<%- data.ya %> 
                 <% } %>
         ">Ya</a>
-        <a href="<% if(data.tidak === "NONE" || data.tidak.substring(0,2)==="KR"){ %>
+        <a role="button" class="btn shadow-sm border border-dark btn-lg border-3" href="<% if(data.tidak === "NONE" || data.tidak.substring(0,2)==="KR"){ %>
                 /diagnosa/hasil/<%- data.tidak %> 
                 <% } else{ %>  
                 /diagnosa/tanya/<%- data.tidak %> 

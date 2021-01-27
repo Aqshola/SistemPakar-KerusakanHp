@@ -3,7 +3,6 @@ const { QueryTypes } = require("sequelize");
 
 const getDiagnosa = async (req, res) => {
   try {
-    const tipe = req.params.id.substring(0, 2);
     let data = {};
 
     const tanya = await sequelize.query(
@@ -48,10 +47,9 @@ const getHasilDiagnosa = async (req, res) => {
       }
     );
 
-    data = "Terjadi kerusakan pada " + hasil[0].nama_rusak;
+    data = hasil[0].nama_rusak;
   } else {
-    data =
-      "Tidak diketahui, hubungi admin untuk tambah data atau bawa hape ke tempat service";
+    data = "NONE";
   }
 
   res.render("pages/hasil.ejs", { data });

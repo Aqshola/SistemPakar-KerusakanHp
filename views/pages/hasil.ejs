@@ -13,17 +13,29 @@
       crossorigin="anonymous"
     />
 
-    <title>Hello, world!</title>
+    <title>Hasil Cek kerusakan</title>
   </head>
   <body>
     <div
-      class="d-flex flex-column p-4 justify-content-center align-items-center"
+      class="vh-100 d-flex flex-column p-4 justify-content-center align-items-center border"
     >
-      <h1 class="">Hasil Diagnosa</h1>
-      <div class="mt-5">
-        <p><%- data %></p>
+      <h2 class="">Kesimpulan</h2>
+      <div class="mt-3">
+        <% if(data==="NONE"){ %>
+        <h3 class="fw-bold">☹ Maaf kerusakan tidak diketahui</h3>
+        <% } else{ %>
+        <h3 class="fw-bold">
+          Terjadi kerusakan
+          <span class="text-danger text-decoration-underline"><%- data %></span>
+        </h3>
+        <% } %>
       </div>
-      <a href="/" class="mt-5">Home</a>
+      <a
+        class="btn shadow-sm border border-dark mt-5 border-3"
+        href="/"
+        class="mt-5"
+        >Kembali ke Halaman awal</a
+      >
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
