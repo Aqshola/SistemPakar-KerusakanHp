@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const Flash = require("./middleware/FlashMessage");
+
 const main = require("./routes/main");
 const diagnosa = require("./routes/diagnosa");
 const admin = require("./routes/admin");
@@ -21,6 +23,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use(Flash);
 
 const PORT = 5000 || process.env.PORT;
 

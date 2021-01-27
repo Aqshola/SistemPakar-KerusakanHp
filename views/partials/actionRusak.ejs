@@ -1,5 +1,5 @@
 <% if (action==="add") { %>
-<h3>Tambah Data Rusak</h3>
+<h3 class="mt-5">Tambah Data Rusak</h3>
 <form method="POST" class="w-50 d-flex flex-column">
   <div class="form-group">
     <label for="exampleFormControlInput1">Kode Kerusakan</label>
@@ -23,7 +23,7 @@
   <button class="mt-5 btn btn-primary w-25 align-self-end">Simpan</button>
 </form>
 <% } %> <% if (action==="edit") { %>
-<h3>Edit Data Rusak</h3>
+<h3 class="mt-5">Edit Data Rusak</h3>
 <form
   method="POST"
   action="/admin/edit/rusak/<%- dataRusak[0].id_rusak %>"

@@ -15,6 +15,7 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    <%- include("../components/Alert.ejs") %>
     <div
       class="container vh-100 d-flex justify-content-center align-items-center"
     >
@@ -61,6 +62,12 @@
       crossorigin="anonymous"
     ></script>
 
+    <script>
+      let displayAlert = document.querySelector("#alert");
+      setTimeout(() => {
+        displayAlert.style.display = "none";
+      }, 2500);
+    </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>

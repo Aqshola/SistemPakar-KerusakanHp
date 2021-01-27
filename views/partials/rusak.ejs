@@ -1,22 +1,24 @@
 <div class="w-75 d-flex flex-column p-3">
-  <h2>Data Kerusakan</h2>
+  <h2 class="mt-5">Data Kerusakan</h2>
   <div class="mt-2 d-flex flex-column">
     <a href="/admin/add/rusak" class="btn btn-primary align-self-end"
       >Tambah data</a
     >
     <div class="tableFixHead mt-2">
-      <table class="table table-striped">
+      <table class="table table-striped table-sm">
         <thead>
           <tr>
+            <th scope="col">#</th>
             <th scope="col">ID kerusakan</th>
             <th scope="col">Nama Kerusakan</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <% hasil.forEach(data => { %>
+          <% hasil.forEach((data,i) => { %>
           <tr>
-            <th scope="row"><%- data.id_rusak %></th>
+            <th><%-i+1 %></th>
+            <th><%- data.id_rusak %></th>
             <td><%- data.nama_rusak %></td>
             <td class="d-flex justify-content-evenly">
               <a

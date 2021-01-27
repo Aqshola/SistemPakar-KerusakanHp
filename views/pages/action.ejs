@@ -16,7 +16,8 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="d-flex p-4">
+    <%- include("../components/Alert.ejs") %>
+    <div class="d-flex">
       <%- include("../components/sideNav.ejs") %>
       <div class="w-75 border d-flex flex-column p-3">
         <% if (type==="rusak") { %> <%- include("../partials/actionRusak.ejs")
@@ -32,5 +33,11 @@
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"
     ></script>
+    <script>
+      let displayAlert = document.querySelector("#alert");
+      setTimeout(() => {
+        displayAlert.style.display = "none";
+      }, 2500);
+    </script>
   </body>
 </html>

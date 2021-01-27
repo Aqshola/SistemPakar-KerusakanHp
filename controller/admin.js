@@ -39,7 +39,10 @@ const postEditRusak = async (req, res) => {
     { type: QueryTypes.UPDATE }
   );
 
-  console.log("update");
+  req.session.message = {
+    message: "Edit data berhasil",
+    type: "success",
+  };
 
   const dataRusak = await sequelize.query(
     `select * from kerusakan where id_rusak = '${req.params.id}'`,
@@ -59,12 +62,15 @@ const postAddRusak = async (req, res) => {
         type: QueryTypes.INSERT,
       }
     );
-    console.log("success");
+    req.session.message = {
+      message: "Tambah data berhasil",
+      type: "success",
+    };
   } catch (err) {
     console.log(err);
   }
 
-  res.render("pages/action.ejs", { type: "rusak", action: "add" });
+  res.redirect(req.originalUrl);
 };
 const postRemoveRusak = async (req, res) => {
   const id_rusak = req.params.id;
@@ -79,8 +85,6 @@ const postRemoveRusak = async (req, res) => {
     }
   );
 
-  console.log("pertanyaan delete");
-
   await sequelize.query(
     `    delete from kerusakan
     where id_rusak = '${id_rusak}'
@@ -90,7 +94,10 @@ const postRemoveRusak = async (req, res) => {
     }
   );
 
-  console.log("kerusakan delete");
+  req.session.message = {
+    message: "Hapus data berhasil",
+    type: "success",
+  };
 
   res.redirect("/admin");
 };
@@ -139,7 +146,10 @@ const postAddGejala = async (req, res) => {
         type: QueryTypes.INSERT,
       }
     );
-    console.log("success");
+    req.session.message = {
+      message: "Tambah data berhasil",
+      type: "success",
+    };
     res.redirect(req.originalUrl);
   } catch (err) {
     console.log(err);
@@ -156,7 +166,12 @@ const postEditGejala = async (req, res) => {
       `,
       { type: QueryTypes.UPDATE }
     );
-    console.log("Update sukses");
+
+    req.session.message = {
+      message: "Edit data berhasil",
+      type: "success",
+    };
+
     res.redirect(req.originalUrl);
   } catch (err) {
     console.log(err);
@@ -173,12 +188,15 @@ const postRemoveGejala = async (req, res) => {
       type: QueryTypes.DELETE,
     }
   );
-  console.log("delete pertanyaan");
+
   await sequelize.query(`delete from gejala where id_gejala = '${id}'`, {
     type: QueryTypes.DELETE,
   });
 
-  console.log("delete gejala");
+  req.session.message = {
+    message: "Hapus data berhasil",
+    type: "success",
+  };
 
   res.redirect("/admin/gejala");
 };
@@ -209,7 +227,6 @@ const getAddRelasi = async (req, res) => {
   const dataRusak = await sequelize.query("select * from kerusakan", {
     type: QueryTypes.SELECT,
   });
-
   res.render("pages/action.ejs", {
     type: "relasi",
     dataGejala,
@@ -258,7 +275,10 @@ const postAddRelasi = async (req, res) => {
       }
     );
 
-    console.log("success");
+    req.session.message = {
+      message: "Tambah data berhasil",
+      type: "success",
+    };
 
     res.redirect(req.originalUrl);
   } catch (err) {
@@ -278,7 +298,10 @@ const postEditRelasi = async (req, res) => {
       where id=${id}
       `
     );
-    console.log("Update sukses");
+    req.session.message = {
+      message: "Edit data berhasil",
+      type: "success",
+    };
     res.redirect(req.originalUrl);
   } catch (err) {
     console.log(err);
@@ -330,7 +353,10 @@ const postRemoveRelasi = async (req, res) => {
       }
     );
 
-    console.log("Delete success");
+    req.session.message = {
+      message: "Hapus data berhasil",
+      type: "success",
+    };
 
     res.redirect("/admin/relasi");
   } catch (err) {

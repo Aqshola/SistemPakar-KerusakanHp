@@ -17,6 +17,7 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    <%- include("../components/Alert.ejs") %>
     <div class="d-flex">
       <%- include("../components/sideNav.ejs") %> <% if (type==="rusak") { %>
       <%- include("../partials/rusak.ejs") %> <% } %> <% if (type==="gejala") {

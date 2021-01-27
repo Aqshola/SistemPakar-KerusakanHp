@@ -1,8 +1,6 @@
 const { sequelize } = require("../config/DB");
 const { QueryTypes } = require("sequelize");
-
 const getLogin = async (req, res) => {
-  console.log(req.session);
   if (req.session.loggedIn === true) {
     return res.redirect("/admin");
   } else {
@@ -24,13 +22,21 @@ const postLogin = async (req, res) => {
       );
 
       if (user.length === 0) {
-        console.log("Tidak ada User");
+        req.session.message = {
+          message: "No User",
+          type: "danger",
+        };
+        req.session.loggedIn = false;
       } else {
         if (password === user[0].password) {
           req.session.loggedIn = true;
           return res.redirect("/admin");
         } else {
           req.session.loggedIn = false;
+          req.session.message = {
+            message: "Invalid Credential",
+            type: "danger",
+          };
         }
       }
       return res.redirect(req.originalUrl);

@@ -1,0 +1,11 @@
+<% if (message) { %>
+<div class="w-100 h-0 position-relative d-flex justify-content-center">
+  <div
+    class="alert alert-<%- message.type %> position-absolute mt-2"
+    role="alert"
+    id="alert"
+  >
+    <%- message.message %>
+  </div>
+</div>
+<% } %>
