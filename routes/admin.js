@@ -19,11 +19,11 @@ const {
   postEditRelasi,
   postRemoveRelasi,
 } = require("../controller/admin");
-const Auth = require("../middleware/Auth");
+
 const router = express.Router();
 
 //Rusak Route
-router.get("/", Auth, getRusak);
+router.get("/", getRusak);
 router.get("/add/rusak", getAddRusak);
 router.get("/edit/rusak/:id", getEditRusak);
 router.post("/add/rusak", postAddRusak);

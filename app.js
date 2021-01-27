@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const Flash = require("./middleware/FlashMessage");
+const Auth = require("./middleware/Auth");
 
 const main = require("./routes/main");
 const diagnosa = require("./routes/diagnosa");
@@ -32,7 +33,7 @@ callDB();
 
 app.use("/", main);
 app.use("/diagnosa", diagnosa);
-app.use("/admin", admin);
+app.use("/admin", Auth, admin);
 app.use("/auth", auth);
 
 app.listen(PORT, console.log("Listening port 5000"));
