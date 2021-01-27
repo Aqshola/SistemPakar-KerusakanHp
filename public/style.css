@@ -20,7 +20,7 @@
 
 .tableFixHead {
   overflow-y: auto;
-  height: 550px;
+  height: 500px;
 }
 .tableFixHead thead th {
   position: sticky;
@@ -39,4 +39,14 @@ td {
 }
 th {
   background: #eee;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.full-height {
+  height: 100%;
 }

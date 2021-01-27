@@ -1,18 +1,18 @@
-<div class="w-25 vh-100 navbar-light bg-light">
-        <h2 class="mb-4 p-3">Nav</h2>
+<div class="w-25 min-vh-100 full-height navbar-dark bg-primary bg-gradient border">
+        <h2 class="mb-4 p-3 text-white fw-bold">Nav</h2>
         <div>
           <div class="d-flex flex-column nav-item navbar-nav p-3">
-            <a href="/admin/" class="nav-link <% if (type==="rusak") { %>
+            <a href="/admin/" class="nav-link fs-5 <% if (type==="rusak") { %>
              active
-            <% } %>">data kerusakan</a>
-            <a href="/admin/gejala" class="nav-link <% if (type==="gejala") { %>
+            <% } %>">Data kerusakan</a>
+            <a href="/admin/gejala" class="nav-link fs-5 <% if (type==="gejala") { %>
              active
-            <% } %>">data gejala</a>
-            <a href="/admin/relasi" class="nav-link <% if (type==="relasi") { %>
+            <% } %>">Data gejala</a>
+            <a href="/admin/relasi" class="nav-link fs-5 <% if (type==="relasi") { %>
              active
-            <% } %>">data relasi</a>
+            <% } %>">Data relasi</a>
 
-            <a href="/auth/logout" class="mt-5 nav-link">Logout</a>
+            <a href="/auth/logout" class="mt-5 nav-link fw-bold fs-5">Logout</a>
           </div>
         </div>
 </div>
