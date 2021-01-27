@@ -28,6 +28,21 @@
   background-color: white;
 }
 
+.img-main {
+  width: 400px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  position: absolute;
+}
+
+@media (max-width: 900px) {
+  .img-main {
+    width: 200px;
+    display: flex;
+  }
+}
+
 /* Just common table stuff. Really. */
 table {
   border-collapse: collapse;
