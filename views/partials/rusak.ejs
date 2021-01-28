@@ -11,6 +11,7 @@
             <th scope="col">#</th>
             <th scope="col">ID kerusakan</th>
             <th scope="col">Nama Kerusakan</th>
+            <th scope="col">Solusi Kerusakan</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -20,19 +21,28 @@
             <th><%-i+1 %></th>
             <th><%- data.id_rusak %></th>
             <td><%- data.nama_rusak %></td>
-            <td class="d-flex justify-content-evenly">
-              <a
-                href="/admin/edit/rusak/<%- data.id_rusak %> "
-                class="btn btn-success"
-                class="mr-2"
-                >Ubah</a
-              >
-              <form
-                method="POST"
-                action="/admin/remove/rusak/<%- data.id_rusak %> "
-              >
-                <button class="btn btn-danger">Hapus</button>
-              </form>
+            <td
+              style="width: 200px; max-height: min-content"
+              class="text-justify"
+            >
+              <% if(data.solusi.length>50){ %> <%= data.solusi.slice(0,50) %>
+              ... <% } else{ %> <%- data.solusi %> <% } %>
+            </td>
+            <td>
+              <div class="d-flex justify-content-evenly">
+                <a
+                  href="/admin/edit/rusak/<%- data.id_rusak %> "
+                  class="btn btn-success"
+                  class="mr-2"
+                  >Ubah</a
+                >
+                <form
+                  method="POST"
+                  action="/admin/remove/rusak/<%- data.id_rusak %> "
+                >
+                  <button class="btn btn-danger">Hapus</button>
+                </form>
+              </div>
             </td>
           </tr>
           <% }) %>

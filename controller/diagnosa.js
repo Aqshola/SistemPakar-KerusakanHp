@@ -40,14 +40,13 @@ const getHasilDiagnosa = async (req, res) => {
 
   if (tipe === "KR") {
     const hasil = await sequelize.query(
-      "SELECT nama_rusak from kerusakan where id_rusak = " +
-        `'${req.params.id}'`,
+      "SELECT * from kerusakan where id_rusak = " + `'${req.params.id}'`,
       {
         type: QueryTypes.SELECT,
       }
     );
 
-    data = hasil[0].nama_rusak;
+    data = hasil[0];
   } else {
     data = "NONE";
   }

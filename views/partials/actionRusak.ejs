@@ -20,6 +20,16 @@
       placeholder="Ex: Komponen rusak"
     />
   </div>
+  <div class="form-group mt-3">
+    <label for="exampleFormControlInput1">Solusi Kerusakan</label>
+    <textarea
+      class="form-control"
+      name="solusi"
+      placeholder="Ex: Harus dilakukan..."
+      style="height: 300px"
+    >
+    </textarea>
+  </div>
   <button class="mt-5 btn btn-primary w-25 align-self-end">Simpan</button>
 </form>
 <% } %> <% if (action==="edit") { %>
@@ -50,6 +60,18 @@
       placeholder="Ex: Komponen rusak"
       value="<%- dataRusak[0].nama_rusak %>"
     />
+  </div>
+  <div class="form-group mt-3">
+    <label for="exampleFormControlInput1">Solusi Kerusakan</label>
+
+    <textarea
+      class="form-control"
+      name="solusi"
+      placeholder="Ex: Harus dilakukan..."
+      style="height: 300px"
+    >
+<%- dataRusak[0].solusi %>
+    </textarea>
   </div>
   <button class="mt-5 btn btn-primary w-25 align-self-end">Simpan</button>
 </form>

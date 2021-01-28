@@ -29,12 +29,13 @@ const getEditRusak = async (req, res) => {
 };
 
 const postEditRusak = async (req, res) => {
-  const { nama_rusak } = req.body;
+  const { nama_rusak, solusi } = req.body;
   const id_rusak = req.params.id;
 
   await sequelize.query(
     `update kerusakan
-     set nama_rusak= '${nama_rusak}'
+     set nama_rusak= '${nama_rusak}',
+         solusi='${solusi}'
      where id_rusak= '${id_rusak}'`,
     { type: QueryTypes.UPDATE }
   );
@@ -55,9 +56,9 @@ const postEditRusak = async (req, res) => {
 };
 const postAddRusak = async (req, res) => {
   try {
-    const { kode_rusak, nama_rusak } = req.body;
+    const { kode_rusak, nama_rusak, solusi } = req.body;
     await sequelize.query(
-      `insert into kerusakan values ('${kode_rusak}','${nama_rusak}')`,
+      `insert into kerusakan values ('${kode_rusak}','${nama_rusak}','${solusi}')`,
       {
         type: QueryTypes.INSERT,
       }
