@@ -35,5 +35,8 @@ app.use("/", main);
 app.use("/diagnosa", diagnosa);
 app.use("/admin", Auth, admin);
 app.use("/auth", auth);
+app.use("*", (req, res) => {
+  res.render("pages/NotFound.ejs");
+});
 
 app.listen(PORT, console.log("Listening port 5000"));
