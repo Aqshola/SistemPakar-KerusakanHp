@@ -36,10 +36,20 @@
   position: absolute;
 }
 
+.solusi {
+  width: 500px;
+  line-height: 30px;
+  text-align: justify;
+}
+
 @media (max-width: 900px) {
   .img-main {
     width: 200px;
     display: flex;
+  }
+
+  .solusi {
+    width: 350px;
   }
 }
 
