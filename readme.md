@@ -15,11 +15,11 @@ untuk keperluan tugas kuliah
 ![tambah1](./tambah1.png)
 
 Route Admin
-### /Auth (Login)__
-username: admin__
-password: admin__
+### /Auth (Login) <br />
+username: admin <br />
+password: admin <br />
 
-### /admin (dashboard)__
-Data Kerusakan__
-Data Gejala__
-Data relasi__
+### /admin (dashboard) <br />
+Data Kerusakan <br />
+Data Gejala <br />
+Data relasi
