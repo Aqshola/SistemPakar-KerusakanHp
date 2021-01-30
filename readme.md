@@ -3,7 +3,7 @@
 dibuat dengan menggunakan NodeJs, Express, EJS, MySQL, Bootstrap
 untuk keperluan tugas kuliah
 
-##Halaman Utama
+## Halaman Utama
 
 ![Main](./main.png)
 ![Ask](./ask.png)
@@ -15,11 +15,11 @@ untuk keperluan tugas kuliah
 ![tambah1](./tambah1.png)
 
 Route Admin
-###/Auth (Login)
-username: admin
-password: admin
+### /Auth (Login)__
+username: admin__
+password: admin__
 
-###/admin (dashboard)
-Data Kerusakan
-Data Gejala
-Data relasi
+### /admin (dashboard)__
+Data Kerusakan__
+Data Gejala__
+Data relasi__
