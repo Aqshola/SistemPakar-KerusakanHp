@@ -1,5 +1,8 @@
 !!! Pastikan pc sudah diinstall NodeJs dan NPM
 
+buat database sistempakar
+import file sql yang ada difolder ini
+
 buka path folder dicmd
 jalankan perintah npm i di cmd
 jalankan npm start di cmd
